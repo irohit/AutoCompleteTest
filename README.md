@@ -6,7 +6,7 @@ Guidelines to setup and test:
 
 1) Import the RestTest project into STS and run it as a spring boot project. This will expose the REST service on localhost and the service endpoint can now be tested with below given URL 
 
-http://localhost:8080/autoFill?name=<input>
+http://localhost:8080/autoFill?name=input
 
 This will return a list of string in a JSON format.
 
