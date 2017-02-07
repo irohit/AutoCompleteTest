@@ -16,4 +16,6 @@ This will return a list of string in a JSON format.
 Open Items: 
 
 1) The assignment was to make an autocomplete which means that user should be able to click the search result and it should fill the input field just by that click.
+
+
 2) The current implementation is donw with vanilla ajax. This should have been implemented with Jquery or angular JS kind of JS framework. 
