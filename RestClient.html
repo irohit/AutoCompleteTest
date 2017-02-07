@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>REST Client</title>
+
+<script language="javascript" type="text/javascript">
+var request = null;
+
+function createRequest() {
+try {
+request = new XMLHttpRequest();
+} catch (trymicrosoft) {
+try {
+request = new ActiveXObject("MsXML2.XMLHTTP");
+} catch (othermicrosoft) {
+try {
+request = new ActiveXObject("Microsoft.XMLHTTP");
+} catch (failed) {
+request = null;
+}
+}
+}
+
+if (request == null)
+alert("Error creating request object!");
+}
+
+function getMessage()
+{
+
+createRequest();
+var input = document.getElementById("autocom").value;
+// id=eval(playerid);
+var url = "http://localhost:8080/autoFill?name="+input;
+console.log(url);
+request.onreadystatechange = handleResponse;
+request.open("GET", url, true);
+request.send(null);
+
+}
+
+function handleResponse() {
+
+
+
+if (request.readyState==4 && request.status==200)
+{ 
+var det=eval("("+request.responseText+")");
+
+var ul = document.getElementById("uli");
+ul.innerHTML = "";
+for (var i = det.length - 1; i >= 0; i--) {
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(det[i]));
+  ul.appendChild(li);
+
+}
+
+}
+</script>
+
+ 
+
+</head>
+<body>
+
+<table>
+<tr>
+<td>Enter Search Prefix : </td>
+<td><input type="text" id="autocom" size="10" onchange="getMessage()" />
+
+</tr>
+
+</table>
+
+
+<ul id="uli">
+	</ul>
+
+</body>
+</html>
